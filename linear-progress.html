@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="linear-progress">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `linear-progress`
+     * Quoting: The MDC Linear Progress component is a spec-aligned linear progress indicator component adhering to the Material Design progress &amp; activity requirements.
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class LinearProgress extends Polymer.Element {
+      static get is() { return 'linear-progress'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'linear-progress'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(LinearProgress.is, LinearProgress);
+  </script>
+</dom-module>

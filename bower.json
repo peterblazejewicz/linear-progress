@@ -1,0 +1,16 @@
+{
+  "name": "linear-progress",
+  "description": "Quoting: The MDC Linear Progress component is a spec-aligned linear progress indicator component adhering to the Material Design progress &amp; activity requirements.",
+  "main": "linear-progress.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  }
+}
