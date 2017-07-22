@@ -76,14 +76,14 @@
       * Puts the component in the closed state
       */
       close() {
-
+        this.classList.add(LinearProgress.cssClasses.CLOSED_CLASS);
       }
 
       /**
       * Puts the component in the open state
       */
       open() {
-
+        this.classList.remove(LinearProgress.cssClasses.CLOSED_CLASS);
       }
 
       /**
