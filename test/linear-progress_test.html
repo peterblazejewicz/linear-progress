@@ -97,10 +97,6 @@
             assert.notStrictEqual(linearProgress.open, undefined);
           });
 
-          test('component has close method', () => {
-            assert.notStrictEqual(linearProgress.close, undefined);
-          });
-
         });
 
         suite('linear-progress determinate property tests', () => {
@@ -208,24 +204,25 @@
 
         });
 
-        suite('linear-progress open close methods', () => {
+        suite('linear-progress open property', () => {
 
           setup(() => {
             linearProgress = fixture('BasicTestFixture');
           });
 
-          test('component has no closed class by default', () => {
+          test('component has open state default', () => {
+            assert.ok(linearProgress.open, 'by default open is true');
             assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.CLOSED_CLASS), false, 'default does not add a class');
           });
 
-          test('close adds class', () => {
-            linearProgress.close();
-            assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.CLOSED_CLASS), true, 'close adds a class');
+          test('component open change to false adds class', () => {
+            linearProgress.open = false;
+            assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.CLOSED_CLASS), true, 'change to closed state adds a class');
           });
 
-          test('open removes class', () => {
-            linearProgress.close();
-            linearProgress.open();
+          test('component opne change to true removes class', () => {
+            linearProgress.open = false;
+            linearProgress.open = true;
             assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.CLOSED_CLASS), false, 'open removes a class');
           });
 
