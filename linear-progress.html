@@ -42,7 +42,7 @@
           */
           determinate: {
             type: Boolean,
-            value: false,
+            value: true,
             observer: '_determinateChanged'
           },
           /**
@@ -98,13 +98,27 @@
       
       _determinateChanged() {
         this.classList.toggle(LinearProgress.cssClasses.INDETERMINATE_CLASS, this.determinate);
+        if(!this.determinate) {
+          this._setScale(this.$.primaryBar, 1);
+        }
       }
 
       _progressChanged() {
-
+        if(this.determinate) {
+          this._setScale(this.$.primaryBar, this.progress);
+        }
       }
 
       _reverseChanged() {
+
+      }
+
+      _setScale(el, scaleValue) {
+        const value = `scaleX(${scaleValue})`;
+        const transformStyleProperties = ['transform', 'WebkitTransform', 'MozTransform', 'OTransform', 'MSTransform'];
+        transformStyleProperties.forEach(transformStyleProperty => {
+          el.style[transformStyleProperty] = value;
+        });
 
       }
 

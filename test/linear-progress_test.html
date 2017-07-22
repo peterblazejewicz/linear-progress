@@ -54,7 +54,7 @@
           });
 
           test('component has set a class on the root node', () => {
-            assert.equal(linearProgress.className, 'my-class');
+            assert.equal(true, linearProgress.classList.contains('my-class'));
           });
 
           test('component returns the primary bar element', () => {
@@ -109,8 +109,8 @@
             linearProgress = fixture('DeterminatePropertyTestFixture');
           });
 
-          test('component has determinate property set to false', () => {
-            assert.strictEqual(linearProgress.determinate, false);
+          test('component has determinate property set to true by default', () => {
+            assert.strictEqual(linearProgress.determinate, true);
           });
 
           test('component determinate changes its value', () => {
