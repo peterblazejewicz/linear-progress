@@ -27,6 +27,13 @@
      * @demo demo/index.html
      */
     class LinearProgress extends Polymer.Element {
+      static get cssClasses() {
+        return {
+          CLOSED_CLASS: 'mdc-linear-progress--closed',
+          INDETERMINATE_CLASS: 'mdc-linear-progress--indeterminate',
+          REVERSED_CLASS: 'mdc-linear-progress--reversed',
+        }
+      }
       static get is() { return 'linear-progress'; }
       static get properties() {
         return {
