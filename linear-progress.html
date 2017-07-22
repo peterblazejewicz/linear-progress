@@ -30,18 +30,77 @@
       static get is() { return 'linear-progress'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'linear-progress'
+          /**
+          * Toggles the component between the determinate and indeterminate state.
+          */
+          determinate: {
+            type: Boolean,
+            value: false,
+            observer: '_determinateChanged'
+          },
+          /**
+          * Sets the progress bar to this value. Value should be between [0, 1]
+          */
+          progress: {
+            type: Number,
+            value: 0,
+            observer: '_progressChanged'
+          },
+          buffer: {
+            type: Number,
+            value: 0,
+            observer: '_bufferChanged'
+          },
+          /**
+          * Reverses the direction of the linear progress indicator
+          */
+          reverse: {
+            type: Boolean,
+            value: false,
+            observer: '_reverseChanged'
           }
         };
       }
+
+      /**
+      * Puts the component in the closed state
+      */
+      close() {
+
+      }
+
+      /**
+      * Puts the component in the open state
+      */
+      open() {
+
+      }
+
       /**
       * Sets the css transform property on the given element.
       */
       setTransform(element, value) {
 
       }
+
+      // private api
+
+      _bufferChanged() {
+
+      }
+      
+      _determinateChanged() {
+
+      }
+
+      _progressChanged() {
+
+      }
+
+      _reverseChanged() {
+
+      }
+
     }
 
     window.customElements.define(LinearProgress.is, LinearProgress);
