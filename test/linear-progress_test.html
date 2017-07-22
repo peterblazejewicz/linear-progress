@@ -19,30 +19,32 @@
       </template>
     </test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <linear-progress prop1="new-prop1"></linear-progress>
-      </template>
-    </test-fixture>
-
     <script>
       suite('linear-progress', function() {
 
-        test('instantiating the element with default properties works', function() {
-          var element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'linear-progress');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello linear-progress!');
-        });
+        let linearProgress;
 
-        test('setting a property on the element works', function() {
-          // Create a test fixture
-          var element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+        suite('linear-progress properties', () => {
+          setup(() => {
+            linearProgress = fixture('BasicTestFixture');
+          });
+
+          test('component has set a class on the root node', () => {
+            assert.equal(linearProgress.className, 'fixture');
+          });
+
+          test('component returns the primary bar element', () => {
+            assert.ok(linearProgress.$.primaryBar);
+          });
+
+          test('component returns the buffer element', () => {
+            assert.ok(linearProgress.$.buffer);
+          });
+
+          test('component has setTransform method', () => {
+            assert.ok(linearProgress.setTransform);
+          });
+
         });
 
       });
