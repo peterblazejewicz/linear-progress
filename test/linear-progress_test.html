@@ -25,6 +25,12 @@
       </template>
     </test-fixture>
 
+    <test-fixture id="DeterminatePropertyTestFixture">
+      <template>
+        <linear-progress></linear-progress>
+      </template>
+    </test-fixture>
+
     <script>
       suite('linear-progress', function() {
 
@@ -81,6 +87,31 @@
 
           test('component has close method', () => {
             assert.notStrictEqual(linearProgress.close, undefined);
+          });
+
+        });
+
+        suite('linear-progress determinate property tests', () => {
+
+          setup(() => {
+            linearProgress = fixture('DeterminatePropertyTestFixture');
+          });
+
+          test('component has determinate property set to false', () => {
+            assert.strictEqual(linearProgress.determinate, false);
+          });
+
+          test('component determinate changes its value', () => {
+            let before = linearProgress.determinate;
+            linearProgress.determinate = !linearProgress.determinate;
+            assert.ok(linearProgress.determinate !== before);
+          });
+
+          test('changing determinate toggles class', () => {
+            linearProgress.determinate = false;
+            assert.equal(false, linearProgress.classList.contains(LinearProgress.cssClasses.INDETERMINATE_CLASS), `${LinearProgress.cssClasses.INDETERMINATE_CLASS} should not be added when determinate is false`);
+            linearProgress.determinate = true;
+            assert.equal(true, linearProgress.classList.contains(LinearProgress.cssClasses.INDETERMINATE_CLASS), `${LinearProgress.cssClasses.INDETERMINATE_CLASS} should be added when determinate is true`);
           });
 
         });
