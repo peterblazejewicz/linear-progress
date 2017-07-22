@@ -53,6 +53,9 @@
             value: 0,
             observer: '_progressChanged'
           },
+          /**
+          * Sets the buffer bar to this value. Value should be between [0, 1]
+          */
           buffer: {
             type: Number,
             value: 0,
@@ -93,13 +96,16 @@
       // private api
 
       _bufferChanged() {
-
+        if(this.determinate) {
+          this._setScale(this.$.buffer, this.buffer);
+        }
       }
       
       _determinateChanged() {
         this.classList.toggle(LinearProgress.cssClasses.INDETERMINATE_CLASS, this.determinate);
         if(!this.determinate) {
           this._setScale(this.$.primaryBar, 1);
+          this._setScale(this.$.buffer, 1);
         }
       }
 
