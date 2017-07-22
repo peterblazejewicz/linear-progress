@@ -208,6 +208,31 @@
 
         });
 
+        suite('linear-progress open close methods', () => {
+
+          setup(() => {
+            linearProgress = fixture('BasicTestFixture');
+          });
+
+          test('component has no closed class by default', () => {
+            assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.CLOSED_CLASS), false, 'default does not add a class');
+          });
+
+          test('close adds class', () => {
+            linearProgress.close();
+            assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.CLOSED_CLASS), true, 'close adds a class');
+          });
+
+          test('open removes class', () => {
+            linearProgress.close();
+            linearProgress.open();
+            assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.CLOSED_CLASS), false, 'open removes a class');
+          });
+
+
+
+        });
+
       });
     </script>
 
