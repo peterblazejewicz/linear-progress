@@ -484,63 +484,75 @@
           REVERSED_CLASS: 'mdc-linear-progress--reversed',
         }
       }
-      static get is() { return 'linear-progress'; }
+      static get is() {
+        return 'linear-progress';
+      }
       static get properties() {
         return {
           /**
-          * Toggles the component between the determinate and indeterminate state.
-          */
+           * Toggles the component between the determinate and indeterminate state.
+           */
           determinate: {
             type: Boolean,
-            value: true,
+            value: false,
+            reflectToAttribute: true,
             observer: '_determinateChanged'
           },
           /**
-          * Sets the progress bar to this value. Value should be between [0, 1]
-          */
+           * Sets the progress bar to this value. Value should be between [0, 1]
+           */
           progress: {
             type: Number,
             value: 0,
+            reflectToAttribute: true,
             observer: '_progressChanged'
           },
           /**
-          * Sets the buffer bar to this value. Value should be between [0, 1]
-          */
+           * Sets the buffer bar to this value. Value should be between [0, 1]
+           */
           buffer: {
             type: Number,
             value: 0,
+            reflectToAttribute: true,
             observer: '_bufferChanged'
           },
           /**
-          * Reverses the direction of the linear progress indicator
-          */
+           * Reverses the direction of the linear progress indicator
+           */
           reverse: {
             type: Boolean,
             value: false,
+            reflectToAttribute: true,
             observer: '_reverseChanged'
           },
           /**
-          * Puts the component in the open state/close state
-          */
+           * Puts the component in the open state/close state
+           */
           open: {
             type: Boolean,
             value: true,
+            reflectToAttribute: true,
             observer: '_openChanged'
           }
         };
       }
 
+      ready() {
+        super.ready();
+        this.setAttribute('role', 'progress');
+        this.classList.add('mdc-linear-progress')
+      }
       // private api
 
       _bufferChanged() {
-        if(this.determinate) {
+        if (this.determinate) {
           this._setScale(this.$.buffer, this.buffer);
         }
       }
-      
+
       _determinateChanged() {
-        this.classList.toggle(LinearProgress.cssClasses.INDETERMINATE_CLASS, this.determinate);
-        if(!this.determinate) {
+        this.classList.toggle(LinearProgress.cssClasses.INDETERMINATE_CLASS, !this.determinate);
+        if (!this.determinate) {
           this._setScale(this.$.primaryBar, 1);
           this._setScale(this.$.buffer, 1);
         }
@@ -551,7 +563,7 @@
       }
 
       _progressChanged() {
-        if(this.determinate) {
+        if (this.determinate) {
           this._setScale(this.$.primaryBar, this.progress);
         }
       }
@@ -562,7 +574,9 @@
 
       _setScale(el, scaleValue) {
         const value = `scaleX(${scaleValue})`;
-        const transformStyleProperties = ['transform', 'WebkitTransform', 'MozTransform', 'OTransform', 'MSTransform'];
+        const transformStyleProperties = ['transform', 'WebkitTransform', 'MozTransform', 'OTransform',
+          'MSTransform'
+        ];
         transformStyleProperties.forEach(transformStyleProperty => {
           el.style[transformStyleProperty] = value;
         });

@@ -101,8 +101,8 @@
             linearProgress = fixture('DeterminatePropertyTestFixture');
           });
 
-          test('component has determinate property set to true by default', () => {
-            assert.strictEqual(linearProgress.determinate, true);
+          test('component has determinate property set to false by default', () => {
+            assert.strictEqual(linearProgress.determinate, false);
           });
 
           test('component determinate changes its value', () => {
@@ -113,9 +113,9 @@
 
           test('changing determinate toggles class', () => {
             linearProgress.determinate = false;
-            assert.equal(false, linearProgress.classList.contains(LinearProgress.cssClasses.INDETERMINATE_CLASS), `${LinearProgress.cssClasses.INDETERMINATE_CLASS} should not be added when determinate is false`);
+            assert.equal(true, linearProgress.classList.contains(LinearProgress.cssClasses.INDETERMINATE_CLASS), `${LinearProgress.cssClasses.INDETERMINATE_CLASS} should be added when determinate is false`);
             linearProgress.determinate = true;
-            assert.equal(true, linearProgress.classList.contains(LinearProgress.cssClasses.INDETERMINATE_CLASS), `${LinearProgress.cssClasses.INDETERMINATE_CLASS} should be added when determinate is true`);
+            assert.equal(false, linearProgress.classList.contains(LinearProgress.cssClasses.INDETERMINATE_CLASS), `${LinearProgress.cssClasses.INDETERMINATE_CLASS} should be not be added when determinate is true`);
           });
 
         });
@@ -124,6 +124,7 @@
 
           setup(() => {
             linearProgress = fixture('ProgressPropertyTestFixture');
+            linearProgress.determinate = true;
           });
 
           test('component has progress property set to 0 when start', () => {
@@ -150,6 +151,7 @@
 
           setup(() => {
             linearProgress = fixture('BasicTestFixture');
+            linearProgress.determinate = true;
           });
 
           test('component has buffer property set to 0 when start', () => {
