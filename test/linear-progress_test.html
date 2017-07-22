@@ -179,6 +179,35 @@
 
         });
 
+        suite('linear-progress reverse property tests', () => {
+
+          setup(() => {
+            linearProgress = fixture('BasicTestFixture');
+          });
+
+          test('component has reverse property set to false when start', () => {
+            assert.strictEqual(linearProgress.reverse, false, 'reverse default value should be false');
+            assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.REVERSED_CLASS), false, 'reverse by default does not add a class');
+          });
+
+          test('component has no class added by default with reverse property', () => {
+            assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.REVERSED_CLASS), false, 'reverse by default does not add a class');
+          });
+
+          test('component reverse set to true sets class', () => {
+            linearProgress.reverse = true;
+            assert.strictEqual(linearProgress.reverse, true, 'getter returns expected value');
+            assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.REVERSED_CLASS), true, 'reversed class should be added');
+          });
+
+          test('component reverse set to false removes class', () => {
+            linearProgress.reverse = true;
+            linearProgress.reverse = false;
+            assert.strictEqual(linearProgress.classList.contains(LinearProgress.cssClasses.REVERSED_CLASS), false, 'reversed class should be removed');
+          });
+
+        });
+
       });
     </script>
 
