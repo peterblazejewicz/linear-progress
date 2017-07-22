@@ -7,7 +7,14 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <div class="mdc-linear-progress__buffering-dots"></div>
+    <div id="buffer" class="mdc-linear-progress__buffer"></div>
+    <div id="primaryBar" class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+      <span class="mdc-linear-progress__bar-inner"></span>
+    </div>
+    <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+      <span class="mdc-linear-progress__bar-inner"></span>
+    </div>
   </template>
 
   <script>
@@ -28,6 +35,12 @@
             value: 'linear-progress'
           }
         };
+      }
+      /**
+      * Sets the css transform property on the given element.
+      */
+      setTransform(element, value) {
+
       }
     }
 

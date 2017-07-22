@@ -15,7 +15,7 @@
 
     <test-fixture id="BasicTestFixture">
       <template>
-        <linear-progress></linear-progress>
+        <linear-progress class="my-class"></linear-progress>
       </template>
     </test-fixture>
 
@@ -30,7 +30,7 @@
           });
 
           test('component has set a class on the root node', () => {
-            assert.equal(linearProgress.className, 'fixture');
+            assert.equal(linearProgress.className, 'my-class');
           });
 
           test('component returns the primary bar element', () => {
