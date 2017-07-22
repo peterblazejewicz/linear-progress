@@ -153,6 +153,32 @@
 
         });
 
+
+        suite('linear-progress progress buffer property tests', () => {
+
+          setup(() => {
+            linearProgress = fixture('BasicTestFixture');
+          });
+
+          test('component has buffer property set to 0 when start', () => {
+            assert.strictEqual(linearProgress.buffer, 0, 'buffer default value should be 0');
+          });
+
+          test('component buffer sets transform', () => {
+            linearProgress.buffer = 0.5;
+            assert.strictEqual(linearProgress.buffer, 0.5, 'getter returns expected value');
+            assert.strictEqual(linearProgress.$.buffer.style.transform, 'scaleX(0.5)');
+          });
+
+          test('component buffer on indeterminate does nothing', () => {
+            linearProgress.determinate = false;
+            linearProgress.buffer = 0.5;
+            assert.strictEqual(linearProgress.buffer, 0.5, 'getter returns expected value');
+            assert.strictEqual(linearProgress.$.buffer.style.transform, 'scaleX(1)');
+          });
+
+        });
+
       });
     </script>
 
