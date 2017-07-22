@@ -31,6 +31,18 @@
       </template>
     </test-fixture>
 
+    <test-fixture id="ProgressPropertyTestFixture">
+      <template>
+        <linear-progress></linear-progress>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="ProgressConfiguredPropertyTestFixture">
+      <template>
+        <linear-progress progress="0.1"></linear-progress>
+      </template>
+    </test-fixture>
+
     <script>
       suite('linear-progress', function() {
 
@@ -112,6 +124,31 @@
             assert.equal(false, linearProgress.classList.contains(LinearProgress.cssClasses.INDETERMINATE_CLASS), `${LinearProgress.cssClasses.INDETERMINATE_CLASS} should not be added when determinate is false`);
             linearProgress.determinate = true;
             assert.equal(true, linearProgress.classList.contains(LinearProgress.cssClasses.INDETERMINATE_CLASS), `${LinearProgress.cssClasses.INDETERMINATE_CLASS} should be added when determinate is true`);
+          });
+
+        });
+
+        suite('linear-progress progress default property tests', () => {
+
+          setup(() => {
+            linearProgress = fixture('ProgressPropertyTestFixture');
+          });
+
+          test('component has progress property set to 0 when start', () => {
+            assert.strictEqual(linearProgress.progress, 0, 'default value should be 0');
+          });
+
+          test('component progress sets transform', () => {
+            linearProgress.progress = 0.5;
+            assert.strictEqual(linearProgress.progress, 0.5, 'getter returns expected value');
+            assert.strictEqual(linearProgress.$.primaryBar.style.transform, 'scaleX(0.5)');
+          });
+
+          test('component progress on indeterminate does nothing', () => {
+            linearProgress.determinate = false;
+            linearProgress.progress = 0.5;
+            assert.strictEqual(linearProgress.progress, 0.5, 'getter returns expected value');
+            assert.strictEqual(linearProgress.$.primaryBar.style.transform, 'scaleX(1)');
           });
 
         });
