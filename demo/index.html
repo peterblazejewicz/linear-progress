@@ -20,9 +20,38 @@
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic linear-progress demo</h3>
+      <h4>Determinate</h4>
+      <demo-snippet>
+        <template>
+          <linear-progress progress=".5" determinate></linear-progress>
+        </template>
+      </demo-snippet>
+
+      <h4>Determinate Reverse</h4>
+      <demo-snippet>
+        <template>
+          <linear-progress progress=".5" determinate reverse></linear-progress>
+        </template>
+      </demo-snippet>
+
+      <h4>Indeterminate</h4>
       <demo-snippet>
         <template>
           <linear-progress></linear-progress>
+        </template>
+      </demo-snippet>
+
+      <h4>Indeterminate</h4>
+      <demo-snippet>
+        <template>
+          <linear-progress reverse></linear-progress>
+        </template>
+      </demo-snippet>
+
+      <h4>Buffer</h4>
+      <demo-snippet>
+        <template>
+          <linear-progress determinate progress="0.5" buffer="0.3"></linear-progress>
         </template>
       </demo-snippet>
     </div>
